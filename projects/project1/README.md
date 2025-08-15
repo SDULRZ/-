@@ -19,7 +19,7 @@ T-Table:  312.67 MB/s (5.4x speedup)
 
 2. SM4-GCM相关实现
    
-GCM的实现过程为：生成哈希子密钥$H=SM4(0)$，初始化计数器$J_0$，GHASH处理附加认证数据(AAD)，CTR模式加密，GHASH处理密文，生成认证标签。
+GCM的实现过程为：生成哈希子密钥$H=SM4\(0\)$，初始化计数器$J_0$，GHASH处理附加认证数据(AAD)，CTR模式加密，GHASH处理密文，生成认证标签。
 
 运行GCM.c的代码，得到结果：
 ```
@@ -30,3 +30,4 @@ Decryption Verified
 
 
 可以看到效率比较高。
+
