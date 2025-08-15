@@ -20,7 +20,7 @@ Test passed
 攻击主要流程为：
 - 获取原始哈希：假设服务端计算 $hash = SM3(secret + message)$，攻击者知道$hash$和$message$的长度（但不知道 $secret$）。
 - 恢复内部状态：SM3 的哈希值实际上是最后一轮的 8 个 32-bit 寄存器值（A-H），所以攻击者可以将其作为新的 IV（初始向量）。
-- 构造伪造消息：计算$secret + message$的标准填充（\x80 + \x00 + 长度），得到$padding$；构造 $forged_msg = message + padding + extension$（不需要知道 $secret$）。
+- 构造伪造消息：计算$secret + message$的标准填充（\x80 + \x00 + 长度），得到$padding$；构造 $forged_{msg} = message + padding + extension$（不需要知道 $secret$）。
 - 计算扩展哈希：使用恢复的 IV 计算$SM3(extension)$，得到的结果就是$H(secret || message || padding || extension)$。
 - 验证攻击：服务端计算$H(secret + message + padding + extension)$，结果应与攻击者的伪造哈希一致。
 
@@ -70,5 +70,6 @@ Verification: True
 Non-membership test for '10':
 Leaf '10' does not exist in tree
 ```
+
 
 可以看到验证成功。
